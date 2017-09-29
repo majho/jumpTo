@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Jump To</title>
+
+    <style>
+        html {
+            font-family: sans-serif;
+            text-align: center;
+        }
+
+        body { margin: 0; }
+        h1 { margin: 0 0 0.25em; }
+        .head, .foot { padding: 2em; }
+
+        .line {
+            margin: auto;
+            width: 0.6em;
+            height: 500vh;
+            background-image: linear-gradient(180deg, red, orange, yellow, green, blue, indigo, hotpink);
+            background-size: 100% 100%;
+            border-radius: 0.3em;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="head">
+        <h1>Jump To</h1>
+        <a href="the-end">Down &darr;</a>
+    </header>
+
+    <div class="line"></div>
+
+    <div id="the-end" class="foot">
+        <button id="to-top" type="button">Back to top</button>
+    </div>
+
+    <script src="../dist/jumpto.js"></script>
+    <script>
+    function easeInOutCirc(t, b, c, d) {
+        if ((t/=d/2) < 1) return -c/2 * (Math.sqrt(1 - t*t) - 1) + b;
+        return c/2 * (Math.sqrt(1 - (t-=2)*t) + 1) + b;
+    }
+
+    var btn = document.getElementById('to-top');
+    var down = document.querySelector('a[href="the-end"]');
+    var foot = document.getElementById('the-end');
+
+    down.addEventListener('click', function(e) {
+        e.preventDefault();
+        jumpTo(foot);
+    }, false);
+
+    btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        jumpTo('.head', { duration: 2000, easing: easeInOutCirc });
+    }, false);
+    </script>
+
+</body>
+</html>

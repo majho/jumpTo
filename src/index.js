@@ -4,9 +4,8 @@ const getScroll = () => (window.pageOffsetY || document.documentElement.scrollTo
 const setScroll = pos => window.scrollTo(0, pos);
 const top = (el, offset) => (el.getBoundingClientRect().top + offset);
 const targetPos = (target, offset) => {
-    const type = typeof target;
-    if (type === 'number') return offset + target;
-    if (type === 'string') return top(document.querySelector(target), offset);
+    if (typeof target === 'number') return offset + target;
+    if (typeof target === 'string') return top(document.querySelector(target), offset);
     return top(target, offset);
 };
 

@@ -13,9 +13,9 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-      "scroll",
-      "smooth",
-      "scroll animation"
+    "scroll",
+    "smooth",
+    "scroll animation"
   ],
   "author": {
     "name": "Martin Johansson",
